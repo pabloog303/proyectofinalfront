@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+:root {
+  --font-Base: 'Space Mono', monospace;
+  --main-color: #323232;
+  --font-color: #323232;
+  --font-color-sub: #666;
+  --bg-color: #fff;
+}
+
+.plan-semana {
+  padding: 20px;
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  border: 2px solid var(--main-color);
+  box-shadow: 6px 6px var(--main-color);
+  font-family: var(--font-Base);
+}
+
+.plan-semana h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: var(--main-color);
+}
+
+.plan-semana h3 {
+  margin-top: 30px;
+  color: var(--main-color);
+  font-size: 20px;
+}
+
+.plan-semana ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.plan-semana li {
+  padding: 12px;
+  margin-bottom: 10px;
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  transition: 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.plan-semana li:hover {
+  background-color: #eaeaea;
+}
+
+/* Estilo del texto de cada entreno */
+.descripcion-entreno {
+  font-size: 16px;
+  color: var(--font-color);
+}
+
+/* Alinear checkbox y texto */
+.entreno-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Cuando el entreno está completado */
+.plan-semana li.completado .descripcion-entreno {
+  text-decoration: line-through;
+  color: red;
+  font-weight: bold;
+}
+
+/* Estilos checkbox SVG animado */
+.container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container input {
+  display: none;
+}
+
+.container svg {
+  overflow: visible;
+}
+
+.path {
+  fill: none;
+  stroke: black;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dasharray 0.5s ease;
+  stroke-dasharray: 0 0 240 9999999;
+  stroke-dashoffset: 1;
+  scale: -1 1;
+  transform-origin: center;
+  animation: hi 0.5s;
+}
+
+.container input:checked ~ svg .path {
+  stroke-dasharray: 0 262 70 9999999;
+  transition-delay: 0s;
+  scale: 1 1;
+  animation: none;
+}
+
+@keyframes hi {
+  0% {
+    stroke-dashoffset: 20;
+  }
+  to {
+    stroke-dashoffset: 1;
+  }
+}

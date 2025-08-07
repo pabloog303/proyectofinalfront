@@ -1,0 +1,97 @@
+/* src/styles/ConfigPlan.css */
+
+/* Contenedor principal del formulario de configuración */
+.config-plan {
+  font-family: var(--font-Base); /* Usa la fuente única */
+  padding: 24px;
+  max-width: 500px;
+  margin: 40px auto;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  border: 2px solid var(--main-color);
+  box-shadow: 6px 6px var(--main-color);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Título */
+.config-plan h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--font-color);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Etiquetas */
+.config-plan label {
+  font-weight: 600;
+  color: var(--font-color);
+}
+
+/* Inputs y select */
+.config-plan input,
+.config-plan select {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--font-color);
+  padding: 5px 10px;
+  outline: none;
+}
+
+/* Botón con animación estilo oauthButton */
+.config-plan button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  height: 40px;
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--font-color);
+  cursor: pointer;
+  transition: all 250ms;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.config-plan button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: #212121;
+  z-index: -1;
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+.config-plan button:hover {
+  color: #e8e8e8;
+}
+
+.config-plan button:hover::before {
+  width: 100%;
+}
+
+/* Mensaje de error o advertencia */
+.config-plan p {
+  color: red;
+  text-align: center;
+  font-weight: 600;
+}

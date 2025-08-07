@@ -1,0 +1,104 @@
+/* Asegura que no se desborde horizontalmente */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden; /* evita scroll lateral */
+}
+
+/* Navbar retro que ocupa todo el ancho sin causar scroll horizontal */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  width: 100%;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  font-family: var(--font-Base);
+  border-bottom: 2px solid var(--main-color);
+  box-shadow: 0 6px var(--main-color);
+  position: relative;
+  z-index: 10;
+}
+
+/* Título */
+.navbar h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--font-Base);
+  letter-spacing: 1px;
+}
+
+/* Contenedor de botones */
+.navbar div {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* BOTONES Y ENLACES — igual que antes */
+.navbar a,
+.navbar button {
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.2;
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  max-width: 180px;
+  text-align: center;
+}
+
+.navbar a::before,
+.navbar button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+}
+
+.navbar a:hover,
+.navbar button:hover {
+  color: #e8e8e8;
+}
+
+.navbar a:hover::before,
+.navbar button:hover::before {
+  width: 100%;
+}
+
+/* Logo + título */
+.navbar-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Logo de correr */
+.logo {
+  height: 35px;
+  width: 35px;
+  object-fit: contain;
+}
