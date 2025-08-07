@@ -24,3 +24,6 @@
    ```sh
    git clone https://github.com/tuusuario/PlanMi21K.git
    cd PlanMi21K
+
+   recuerda poner los comadnos
+   npm install
