@@ -21,29 +21,93 @@ body {
   border-bottom: 2px solid var(--main-color);
   box-shadow: 0 6px var(--main-color);
   position: relative;
-  z-index: 10;
+  z-index: 100;
 }
 
 /* Título */
 .navbar h3 {
   margin: 0;
-  font-size: 22px;
+  font-size: clamp(18px, 4vw, 22px);
   font-weight: 700;
   font-family: var(--font-Base);
   letter-spacing: 1px;
 }
 
-/* Contenedor de botones */
-.navbar div {
+/* Logo + título */
+.navbar-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 101;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
+/* Logo de correr */
+.logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Botón hamburguesa (móvil) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 101;
+  min-height: 44px;
+  min-width: 44px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--main-color);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Contenedor del menú */
+.navbar-menu {
   display: flex;
   gap: 15px;
   align-items: center;
 }
 
-/* BOTONES Y ENLACES — igual que antes */
-.navbar a,
-.navbar button {
-  padding: 15px 25px;
+/* BOTONES Y ENLACES */
+.navbar-menu a,
+.navbar-menu button {
+  padding: 12px 20px;
   border: unset;
   border-radius: 15px;
   color: #212121;
@@ -51,7 +115,7 @@ body {
   background: #e8e8e8;
   position: relative;
   font-weight: 1000;
-  font-size: 17px;
+  font-size: clamp(14px, 3vw, 17px);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.2;
   box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
@@ -60,12 +124,15 @@ body {
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  max-width: 180px;
   text-align: center;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.navbar a::before,
-.navbar button::before {
+.navbar-menu a::before,
+.navbar-menu button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -79,26 +146,91 @@ body {
   transition: all 250ms;
 }
 
-.navbar a:hover,
-.navbar button:hover {
+.navbar-menu a:hover,
+.navbar-menu button:hover {
   color: #e8e8e8;
 }
 
-.navbar a:hover::before,
-.navbar button:hover::before {
+.navbar-menu a:hover::before,
+.navbar-menu button:hover::before {
   width: 100%;
 }
 
-/* Logo + título */
-.navbar-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* RESPONSIVE - MOBILE */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 300px;
+    height: 100vh;
+    background: var(--bg-color);
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    padding: 40px 20px;
+    border-left: 3px solid var(--main-color);
+    box-shadow: -6px 0 20px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease;
+    z-index: 100;
+  }
+
+  .navbar-menu.open {
+    right: 0;
+  }
+
+  .navbar-menu a,
+  .navbar-menu button {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .logo {
+    width: 35px;
+    height: 35px;
+  }
+
+  .navbar h3 {
+    font-size: 18px;
+  }
 }
 
-/* Logo de correr */
-.logo {
-  height: 35px;
-  width: 35px;
-  object-fit: contain;
+/* Overlay cuando el menú está abierto */
+@media (max-width: 768px) {
+  .navbar-menu.open::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+}
+
+/* Botón Crear Plan destacado */
+.btn-crear-plan {
+  background: var(--main-color) !important;
+  color: white !important;
+}
+
+.btn-crear-plan::before {
+  background-color: #4CAF50 !important;
+}
+
+.btn-crear-plan:hover {
+  color: white !important;
 }

@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+:root {
+  --font-Base: 'Space Mono', monospace;
+  --main-color: #323232;
+  --font-color: #323232;
+  --font-color-sub: #666;
+  --bg-color: #fff;
+}
+
+.home {
+  font-family: var(--font-Base);
+}
+
+/* Hero Section */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f2f2f2 0%, #e8e8e8 100%);
+  padding: 40px 20px;
+  border-bottom: 3px solid var(--main-color);
+}
+
+.hero-content {
+  max-width: 800px;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 4em;
+  font-weight: 700;
+  color: var(--main-color);
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.8em;
+  color: var(--font-color);
+  margin: 0 0 20px 0;
+  font-weight: 600;
+}
+
+.hero-description {
+  font-size: 1.2em;
+  color: var(--font-color-sub);
+  margin: 0 0 40px 0;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary, .btn-cta {
+  padding: 18px 40px;
+  border-radius: 10px;
+  font-size: 1.1em;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 3px solid var(--main-color);
+  font-family: var(--font-Base);
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--main-color);
+  color: white;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--main-color);
+  box-shadow: 6px 6px 0 var(--main-color);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 8px 8px 0 var(--main-color);
+}
+
+/* Features Section */
+.features, .training-types, .how-it-works {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features h2, .training-types h2, .how-it-works h2 {
+  font-size: 2.5em;
+  text-align: center;
+  color: var(--main-color);
+  margin: 0 0 50px 0;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.2em;
+  color: var(--font-color-sub);
+  margin: -30px 0 40px 0;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  background: #f8f8f8;
+  border: 3px solid var(--main-color);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--main-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0 auto 20px;
+  border: 3px solid var(--main-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card h3 {
+  font-size: 1.5em;
+  color: var(--main-color);
+  margin: 0 0 15px 0;
+}
+
+.feature-card p {
+  font-size: 1em;
+  color: var(--font-color);
+  line-height: 1.6;
+}
+
+/* Training Types */
+.training-types {
+  background: #f8f8f8;
+  border-top: 3px solid var(--main-color);
+  border-bottom: 3px solid var(--main-color);
+}
+
+.training-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.training-item {
+  background: white;
+  border: 2px solid var(--main-color);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.training-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 4px 4px 0 var(--main-color);
+}
+
+.training-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.95em;
+  margin-bottom: 10px;
+  border: 2px solid;
+}
+
+.training-badge.rodaje-suave {
+  background: #E3F2FD;
+  color: #1976D2;
+  border-color: #1976D2;
+}
+
+.training-badge.rodaje-largo {
+  background: #FCE4EC;
+  color: #C2185B;
+  border-color: #C2185B;
+}
+
+.training-badge.tempo {
+  background: #F3E5F5;
+  color: #7B1FA2;
+  border-color: #7B1FA2;
+}
+
+.training-badge.intervalos {
+  background: #FFEBEE;
+  color: #D32F2F;
+  border-color: #D32F2F;
+}
+
+.training-badge.fartlek {
+  background: #E8F5E9;
+  color: #388E3C;
+  border-color: #388E3C;
+}
+
+.training-badge.series {
+  background: #FFF3E0;
+  color: #F57C00;
+  border-color: #F57C00;
+}
+
+.training-item p {
+  font-size: 0.95em;
+  color: var(--font-color-sub);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* How It Works */
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.step {
+  flex: 1;
+  min-width: 200px;
+  max-width: 250px;
+  text-align: center;
+  padding: 30px 20px;
+  background: #f8f8f8;
+  border: 3px solid var(--main-color);
+  border-radius: 15px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--main-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8em;
+  font-weight: 700;
+  margin: 0 auto 20px;
+  border: 3px solid var(--main-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.step h3 {
+  font-size: 1.3em;
+  color: var(--main-color);
+  margin: 0 0 10px 0;
+}
+
+.step p {
+  font-size: 0.95em;
+  color: var(--font-color-sub);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.step-arrow {
+  font-size: 2em;
+  color: var(--main-color);
+  font-weight: 700;
+}
+
+/* CTA Section */
+.cta {
+  background: linear-gradient(135deg, var(--main-color) 0%, #1a1a1a 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  border-top: 3px solid var(--main-color);
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta h2 {
+  font-size: 2.5em;
+  margin: 0 0 20px 0;
+}
+
+.cta p {
+  font-size: 1.3em;
+  margin: 0 0 40px 0;
+}
+
+.btn-cta {
+  background: white;
+  color: var(--main-color);
+  box-shadow: 6px 6px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5em;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3em;
+  }
+
+  .hero-description {
+    font-size: 1em;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-primary, .btn-secondary, .btn-cta {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .features h2, .training-types h2, .how-it-works h2, .cta h2 {
+    font-size: 2em;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .training-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .steps {
+    flex-direction: column;
+  }
+
+  .step-arrow {
+    transform: rotate(90deg);
+  }
+
+  .step {
+    max-width: 100%;
+  }
+}

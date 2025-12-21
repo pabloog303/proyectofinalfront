@@ -1,0 +1,392 @@
+.acerca-de {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: var(--font-Base);
+}
+
+.hero-section {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, var(--main-color) 0%, var(--bg-color) 100%);
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--main-color);
+}
+
+.hero-section h1 {
+  font-size: 3em;
+  margin: 0;
+  color: var(--font-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section .subtitle {
+  font-size: 1.3em;
+  margin-top: 10px;
+  color: var(--font-color);
+  font-weight: 600;
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.card {
+  background: var(--bg-color);
+  border: 2px solid var(--main-color);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.card h2 {
+  color: var(--font-color);
+  font-size: 2em;
+  margin-bottom: 15px;
+  border-bottom: 3px solid var(--main-color);
+  padding-bottom: 10px;
+}
+
+.card p {
+  line-height: 1.8;
+  font-size: 1.1em;
+  color: var(--font-color);
+}
+
+.metodologia,
+.niveles,
+.beneficios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.metodo-item,
+.beneficio-item {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid var(--main-color);
+  transition: all 0.3s ease;
+}
+
+.metodo-item:hover,
+.beneficio-item:hover {
+  background: var(--main-color);
+  transform: scale(1.05);
+}
+
+.metodo-item h3,
+.beneficio-item h3 {
+  color: var(--font-color);
+  font-size: 1.3em;
+  margin-bottom: 10px;
+}
+
+.metodo-item p,
+.beneficio-item p {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+.beneficio-item .icon {
+  font-size: 2.5em;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--main-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8em;
+  font-weight: 700;
+  margin: 0 auto 15px;
+  border: 3px solid var(--main-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.niveles {
+  gap: 25px;
+}
+
+.nivel {
+  padding: 25px;
+  border-radius: 10px;
+  border: 3px solid var(--main-color);
+  background: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+.nivel:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.nivel.principiante {
+  border-color: #4CAF50;
+}
+
+.nivel.intermedio {
+  border-color: #FF9800;
+}
+
+.nivel.avanzado {
+  border-color: #F44336;
+}
+
+.nivel h3 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: var(--font-color);
+}
+
+.nivel ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nivel ul li {
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+  font-size: 1.05em;
+}
+
+.nivel ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.consejos {
+  list-style: none;
+  padding: 0;
+}
+
+.consejos li {
+  padding: 12px 0;
+  padding-left: 30px;
+  font-size: 1.1em;
+  line-height: 1.6;
+  position: relative;
+}
+
+.consejos li::before {
+  content: "•";
+  position: absolute;
+  left: 5px;
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.cta-section {
+  text-align: center;
+  padding: 40px;
+  background: var(--main-color);
+  border-radius: 15px;
+  margin-top: 20px;
+  border: 3px solid var(--font-color);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+.cta-section h2 {
+  font-size: 2.2em;
+  margin-bottom: 15px;
+  color: var(--font-color);
+}
+
+.cta-section p {
+  font-size: 1.2em;
+  color: var(--font-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .acerca-de {
+    padding: 10px;
+  }
+
+  .hero-section {
+    padding: 30px 15px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+  }
+
+  .hero-section h1 {
+    font-size: 2em;
+  }
+
+  .hero-section .subtitle {
+    font-size: 1em;
+  }
+
+  .content-section {
+    gap: 20px;
+  }
+
+  .card {
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+
+  .card h2 {
+    font-size: 1.5em;
+    margin-bottom: 12px;
+  }
+
+  .card p {
+    font-size: 1em;
+  }
+
+  .metodologia,
+  .niveles,
+  .beneficios {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .metodo-item,
+  .beneficio-item {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .metodo-item h3,
+  .beneficio-item h3 {
+    font-size: 1.1em;
+  }
+
+  .metodo-item p,
+  .beneficio-item p {
+    font-size: 0.95em;
+  }
+
+  .beneficio-item .icon {
+    font-size: 2em;
+  }
+
+  .nivel {
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .nivel h3 {
+    font-size: 1.3em;
+  }
+
+  .nivel ul li {
+    font-size: 0.95em;
+  }
+
+  .consejos li {
+    font-size: 1em;
+    padding: 10px 0 10px 25px;
+  }
+
+  .cta-section {
+    padding: 30px 20px;
+    border-radius: 12px;
+  }
+
+  .cta-section h2 {
+    font-size: 1.8em;
+  }
+
+  .cta-section p {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .acerca-de {
+    padding: 5px;
+  }
+
+  .hero-section {
+    padding: 25px 10px;
+  }
+
+  .hero-section h1 {
+    font-size: 1.6em;
+  }
+
+  .hero-section .subtitle {
+    font-size: 0.95em;
+  }
+
+  .card {
+    padding: 15px 10px;
+    border-radius: 10px;
+  }
+
+  .card h2 {
+    font-size: 1.3em;
+  }
+
+  .card p {
+    font-size: 0.95em;
+  }
+
+  .metodo-item,
+  .beneficio-item {
+    padding: 12px;
+  }
+
+  .metodo-item h3,
+  .beneficio-item h3 {
+    font-size: 1em;
+  }
+
+  .beneficio-item .icon {
+    font-size: 1.8em;
+  }
+
+  .nivel {
+    padding: 15px;
+  }
+
+  .nivel h3 {
+    font-size: 1.2em;
+  }
+
+  .nivel ul li {
+    font-size: 0.9em;
+  }
+
+  .consejos li {
+    font-size: 0.95em;
+  }
+
+  .cta-section {
+    padding: 25px 15px;
+  }
+
+  .cta-section h2 {
+    font-size: 1.5em;
+  }
+
+  .cta-section p {
+    font-size: 0.95em;
+  }
+}

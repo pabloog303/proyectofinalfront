@@ -17,6 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 15px; /* Padding para móvil */
 }
 
 /* Estilo visual del formulario */
@@ -32,13 +33,15 @@
   border-radius: 8px;
   border: 2px solid var(--main-color);
   box-shadow: 6px 6px var(--main-color);
+  width: 100%;
+  max-width: 350px; /* Limitar ancho máximo */
 }
 
 /* Título */
 .form > p {
   color: var(--font-color);
   font-weight: 700;
-  font-size: 20px;
+  font-size: clamp(18px, 4vw, 20px);
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
@@ -47,18 +50,19 @@
 .form > p > span {
   color: var(--font-color-sub);
   font-weight: 600;
-  font-size: 17px;
+  font-size: clamp(15px, 3.5vw, 17px);
 }
 
 /* Inputs */
 .form > input {
-  width: 250px;
-  height: 40px;
+  width: 100%; /* Full width en móvil */
+  min-width: unset;
+  height: 44px; /* Mejor área de toque */
   border-radius: 5px;
   border: 2px solid var(--main-color);
   background-color: var(--bg-color);
   box-shadow: 4px 4px var(--main-color);
-  font-size: 15px;
+  font-size: 16px; /* 16px previene zoom en iOS */
   font-weight: 600;
   color: var(--font-color);
   padding: 5px 10px;
@@ -71,8 +75,8 @@
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 250px;
-  height: 40px;
+  width: 100%; /* Full width en móvil */
+  height: 44px; /* Mejor área de toque */
   border-radius: 5px;
   border: 2px solid var(--main-color);
   background-color: var(--bg-color);
