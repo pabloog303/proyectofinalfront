@@ -24,6 +24,12 @@
   max-height: 90vh;
   overflow-y: auto;
   animation: modalSlideIn 0.3s ease-out;
+  padding: 0; /* Sin padding para que Auth.jsx controle su propio espaciado */
+}
+
+/* Ajustar el padding del auth-wrapper cuando está dentro del modal */
+.modal-content .auth-wrapper {
+  padding: 40px 15px 15px; /* Espacio extra arriba para el botón cerrar */
 }
 
 @keyframes modalSlideIn {

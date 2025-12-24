@@ -1,9 +1,11 @@
 // src/components/ConfigPlan.jsx
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 import '../styles/ConfigPlan.css'
 
 export default function ConfigPlan({ user, setPlan }) {
+  const navigate = useNavigate()
   const [fechaCarrera, setFechaCarrera] = useState('')
   const [nivel, setNivel] = useState('principiante')
   const [diasPorSemana, setDiasPorSemana] = useState(3)
@@ -52,14 +54,21 @@ export default function ConfigPlan({ user, setPlan }) {
       planSemanal.push({ semana: i, entrenos })
     }
 
-    setPlan({ 
+    const nuevoPlan = { 
       fechaCarrera, 
       nivel, 
       diasPorSemana, 
       planSemanal,
       fechaInicio: hoy.toISOString(),
       totalSemanas: semanas
-    })
+    }
+    
+    setPlan(nuevoPlan)
+    
+    // Navegar automáticamente al plan después de generarlo
+    setTimeout(() => {
+      navigate('/mi-plan')
+    }, 100)
   }
 
   function obtenerFase(semana, totalSemanas) {

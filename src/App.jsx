@@ -70,7 +70,11 @@ function App() {
         <Route 
           path="/login" 
           element={
-            user ? <Navigate to="/mi-plan" replace /> : <Auth onLogin={handleLogin} />
+            user ? <Navigate to="/mi-plan" replace /> : (
+              <div className="auth-page">
+                <Auth onLogin={handleLogin} />
+              </div>
+            )
           } 
         />
         <Route
