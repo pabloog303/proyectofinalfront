@@ -1,53 +1,81 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+:root {
+  /* ── Paleta Premium Deportiva ── */
+  --color-bg:          #0a0a0f;
+  --color-surface:     #111118;
+  --color-surface-2:   #1a1a24;
+  --color-border:      rgba(255,255,255,0.08);
+  --color-border-glow: rgba(255,107,0,0.4);
+
+  --color-accent:      #ff6b00;        /* naranja energético */
+  --color-accent-2:    #ff9500;        /* naranja claro */
+  --color-accent-glow: rgba(255,107,0,0.25);
+  --color-blue:        #3d9eff;        /* azul eléctrico */
+  --color-green:       #00e676;        /* verde lima logro */
+
+  --color-text:        #f0f0f5;
+  --color-text-sub:    #8a8a9e;
+  --color-text-muted:  #55556a;
+
+  /* ── Tipografías ── */
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  /* ── Espaciados / Radios ── */
+  --radius-sm:  8px;
+  --radius-md:  16px;
+  --radius-lg:  24px;
+  --radius-xl:  32px;
+
+  /* ── Sombras ── */
+  --shadow-card:  0 4px 24px rgba(0,0,0,0.5);
+  --shadow-glow:  0 0 40px rgba(255,107,0,0.18);
+  --shadow-blue:  0 0 30px rgba(61,158,255,0.18);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  /* Variables para mobile */
-  --mobile-padding: 15px;
-  --mobile-max-width: 100vw;
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-  /* Prevenir zoom en iOS en inputs */
   -webkit-text-size-adjust: 100%;
   touch-action: manipulation;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   min-width: 320px;
   min-height: 100vh;
-  overflow-x: hidden; /* Prevenir scroll horizontal */
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
 #root {
   width: 100%;
   min-height: 100vh;
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Scrollbar personalizada ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface); }
+::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent-2); }
 
 h1 {
   font-size: clamp(2em, 5vw, 3.2em); /* Responsive font */

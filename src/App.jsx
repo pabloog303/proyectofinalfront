@@ -1,6 +1,7 @@
 // src/App.jsx
 import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import Auth from './components/Auth.jsx'
 import ConfigPlan from './components/ConfigPlan.jsx'
 import PlanSemana from './components/PlanSemana.jsx'
@@ -49,6 +50,10 @@ function App() {
       return <Navigate to="/" replace />
     }
     return children
+  }
+
+  ProtectedRoute.propTypes = {
+    children: PropTypes.node.isRequired,
   }
 
   return (

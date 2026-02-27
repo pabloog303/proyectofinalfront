@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 import '../styles/Auth.css'
 
 export default function Auth({ onLogin }) {
@@ -75,4 +76,8 @@ export default function Auth({ onLogin }) {
       </div>
     </div>
   )
+}
+
+Auth.propTypes = {
+  onLogin: PropTypes.func.isRequired,
 }

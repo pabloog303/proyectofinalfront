@@ -1,70 +1,72 @@
-/* Modal overlay */
+/* ════════════════════════════════════════════
+   APP – Modal & globales de layout
+   ════════════════════════════════════════════ */
+
+/* ── Modal overlay ── */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 2000;
   padding: 20px;
 }
 
 .modal-content {
   position: relative;
-  background: white;
-  border-radius: 15px;
-  border: 3px solid #323232;
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
-  max-width: 500px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 60px var(--color-accent-glow);
+  max-width: 460px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  animation: modalSlideIn 0.3s ease-out;
-  padding: 0; /* Sin padding para que Auth.jsx controle su propio espaciado */
-}
-
-/* Ajustar el padding del auth-wrapper cuando está dentro del modal */
-.modal-content .auth-wrapper {
-  padding: 40px 15px 15px; /* Espacio extra arriba para el botón cerrar */
+  animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes modalSlideIn {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(-32px) scale(0.97); opacity: 0; }
+  to   { transform: translateY(0)     scale(1);    opacity: 1; }
 }
 
 .modal-close {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: transparent;
-  border: none;
-  font-size: 2.5em;
-  color: #323232;
+  top: 16px;
+  right: 16px;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  font-size: 1.4rem;
+  color: var(--color-text-sub);
   cursor: pointer;
-  line-height: 1;
-  padding: 0;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   z-index: 10;
+  line-height: 1;
 }
 
 .modal-close:hover {
-  background: #f0f0f0;
+  background: rgba(255,107,0,0.15);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
   transform: rotate(90deg);
+}
+
+/* ── Auth page standalone ── */
+.auth-page {
+  min-height: calc(100vh - 68px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: var(--color-bg);
 }

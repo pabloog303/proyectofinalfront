@@ -2,9 +2,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
+import PropTypes from 'prop-types'
 import '../styles/ConfigPlan.css'
 
-export default function ConfigPlan({ user, setPlan }) {
+export default function ConfigPlan({ setPlan }) {
   const navigate = useNavigate()
   const [fechaCarrera, setFechaCarrera] = useState('')
   const [nivel, setNivel] = useState('principiante')
@@ -372,4 +373,8 @@ export default function ConfigPlan({ user, setPlan }) {
       </div>
     </div>
   )
+}
+
+ConfigPlan.propTypes = {
+  setPlan: PropTypes.func.isRequired,
 }

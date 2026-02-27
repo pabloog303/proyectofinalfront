@@ -1,236 +1,207 @@
-/* Asegura que no se desborde horizontalmente */
-* {
-  box-sizing: border-box;
-}
+/* ════════════════════════════════════════════
+   NAVBAR – Rediseño Premium Deportivo
+   ════════════════════════════════════════════ */
 
-body {
-  margin: 0;
-  overflow-x: hidden; /* evita scroll lateral */
-}
-
-/* Navbar retro que ocupa todo el ancho sin causar scroll horizontal */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 0 40px;
+  height: 68px;
   width: 100%;
-  background-color: var(--bg-color);
-  color: var(--font-color);
-  font-family: var(--font-Base);
-  border-bottom: 2px solid var(--main-color);
-  box-shadow: 0 6px var(--main-color);
-  position: relative;
-  z-index: 100;
+  background: rgba(10, 10, 15, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: box-shadow 0.3s ease;
 }
 
-/* Título */
-.navbar h3 {
-  margin: 0;
-  font-size: clamp(18px, 4vw, 22px);
-  font-weight: 700;
-  font-family: var(--font-Base);
-  letter-spacing: 1px;
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  opacity: 0.6;
 }
 
-/* Logo + título */
-.navbar-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 101;
-}
+/* ── Logo ── */
+.navbar-title { z-index: 101; }
 
 .logo-link {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: inherit;
-  transition: transform 0.3s ease;
+  color: var(--color-text);
+  transition: opacity 0.2s ease;
 }
 
-.logo-link:hover {
-  transform: scale(1.05);
-}
+.logo-link:hover { opacity: 0.85; }
 
-/* Logo de correr */
 .logo {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
+  filter: brightness(1.1);
 }
 
-/* Botón hamburguesa (móvil) */
+.navbar h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.navbar h3 span {
+  color: var(--color-accent);
+}
+
+/* ── Menú desktop ── */
+.navbar-menu {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.navbar-menu a,
+.navbar-menu button {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 9px 18px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-sub);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.navbar-menu a:hover,
+.navbar-menu button:hover {
+  color: var(--color-text);
+  background: var(--color-surface-2);
+  border-color: var(--color-border);
+}
+
+/* ── Botón CTA Navbar ── */
+.btn-crear-plan {
+  background: var(--color-accent) !important;
+  color: #fff !important;
+  border-color: var(--color-accent) !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 0 0 20px var(--color-accent-glow);
+}
+
+.btn-crear-plan:hover {
+  background: var(--color-accent-2) !important;
+  border-color: var(--color-accent-2) !important;
+  color: #fff !important;
+  box-shadow: 0 0 30px var(--color-accent-glow) !important;
+  transform: translateY(-1px);
+}
+
+/* ── Hamburguesa ── */
 .hamburger {
   display: none;
   flex-direction: column;
   gap: 5px;
   background: transparent;
-  border: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  padding: 8px;
+  padding: 10px;
   z-index: 101;
   min-height: 44px;
   min-width: 44px;
   justify-content: center;
   align-items: center;
+  transition: border-color 0.2s ease;
 }
+
+.hamburger:hover { border-color: var(--color-accent); }
 
 .hamburger span {
-  width: 25px;
-  height: 3px;
-  background-color: var(--main-color);
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-text);
   transition: all 0.3s ease;
   border-radius: 2px;
+  display: block;
 }
 
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(7px, 7px);
-}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
-}
-
-/* Contenedor del menú */
-.navbar-menu {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-/* BOTONES Y ENLACES */
-.navbar-menu a,
-.navbar-menu button {
-  padding: 12px 20px;
-  border: unset;
-  border-radius: 15px;
-  color: #212121;
-  z-index: 1;
-  background: #e8e8e8;
-  position: relative;
-  font-weight: 1000;
-  font-size: clamp(14px, 3vw, 17px);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.2;
-  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-  transition: all 250ms;
-  overflow: hidden;
-  cursor: pointer;
-  text-decoration: none;
-  white-space: nowrap;
-  text-align: center;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar-menu a::before,
-.navbar-menu button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  border-radius: 15px;
-  background-color: #212121;
-  z-index: -1;
-  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-  transition: all 250ms;
-}
-
-.navbar-menu a:hover,
-.navbar-menu button:hover {
-  color: #e8e8e8;
-}
-
-.navbar-menu a:hover::before,
-.navbar-menu button:hover::before {
-  width: 100%;
-}
-
-/* RESPONSIVE - MOBILE */
+/* ── RESPONSIVE MOBILE ── */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 10px 15px;
-  }
+  .navbar { padding: 0 16px; }
 
-  .hamburger {
-    display: flex;
-  }
+  .hamburger { display: flex; }
 
   .navbar-menu {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 75%;
+    width: 80%;
     max-width: 300px;
     height: 100vh;
-    background: var(--bg-color);
+    background: var(--color-surface);
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    gap: 20px;
-    padding: 40px 20px;
-    border-left: 3px solid var(--main-color);
-    box-shadow: -6px 0 20px rgba(0, 0, 0, 0.3);
-    transition: right 0.3s ease;
+    gap: 12px;
+    padding: 80px 24px 40px;
+    border-left: 1px solid var(--color-border);
+    box-shadow: -20px 0 60px rgba(0,0,0,0.6);
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 100;
   }
 
-  .navbar-menu.open {
-    right: 0;
-  }
+  .navbar-menu.open { right: 0; }
 
   .navbar-menu a,
   .navbar-menu button {
     width: 100%;
-    max-width: 100%;
     font-size: 16px;
-    padding: 15px;
+    padding: 14px 20px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface-2);
+    color: var(--color-text);
   }
 
-  .logo {
-    width: 35px;
-    height: 35px;
-  }
-
-  .navbar h3 {
-    font-size: 18px;
-  }
-}
-
-/* Overlay cuando el menú está abierto */
-@media (max-width: 768px) {
   .navbar-menu.open::before {
-    content: "";
+    content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background: rgba(0,0,0,0.7);
     z-index: -1;
+    backdrop-filter: blur(4px);
   }
-}
 
-/* Botón Crear Plan destacado */
-.btn-crear-plan {
-  background: var(--main-color) !important;
-  color: white !important;
-}
-
-.btn-crear-plan::before {
-  background-color: #4CAF50 !important;
-}
-
-.btn-crear-plan:hover {
-  color: white !important;
+  .btn-crear-plan {
+    margin-top: 8px;
+    font-size: 16px !important;
+    text-align: center;
+  }
 }

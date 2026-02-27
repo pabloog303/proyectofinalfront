@@ -1,4 +1,5 @@
 import '../styles/Estadisticas.css'
+import PropTypes from 'prop-types'
 
 export default function Estadisticas({ plan }) {
   if (!plan || !plan.planSemanal) return <p>No hay plan para mostrar estadísticas</p>
@@ -178,4 +179,8 @@ export default function Estadisticas({ plan }) {
       </div>
     </div>
   )
+}
+
+Estadisticas.propTypes = {
+  plan: PropTypes.object,
 }

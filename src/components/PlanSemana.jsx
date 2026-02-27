@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import '../styles/PlanSemana.css'
 
 export default function PlanSemana({ plan, setPlan }) {
@@ -153,4 +154,9 @@ export default function PlanSemana({ plan, setPlan }) {
       })}
     </div>
   )
+}
+
+PlanSemana.propTypes = {
+  plan: PropTypes.object.isRequired,
+  setPlan: PropTypes.func.isRequired,
 }

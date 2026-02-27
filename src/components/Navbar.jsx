@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import '../styles/Navbar.css'
 import runningIcon from '../assets/un logo de un person.png'
 
-export default function Navbar({ user, onLogout, hasLogin }) {
+export default function Navbar({ onLogout, hasLogin }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const toggleMenu = () => setMenuOpen(!menuOpen)
@@ -49,4 +50,9 @@ export default function Navbar({ user, onLogout, hasLogin }) {
       </div>
     </nav>
   )
+}
+
+Navbar.propTypes = {
+  onLogout: PropTypes.func.isRequired,
+  hasLogin: PropTypes.bool.isRequired,
 }
