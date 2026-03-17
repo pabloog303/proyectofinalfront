@@ -1,0 +1,44 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ai-fitness-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: aifitness
+      POSTGRES_USER: aifitness
+      POSTGRES_PASSWORD: aifitness
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U aifitness -d aifitness']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  ai-fitness-coach:
+    build: .
+    container_name: ai-fitness-coach
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - '5173:5173'
+      - '8787:8787'
+    environment:
+      PORT: 8787
+      DB_PROVIDER: postgres
+      DATABASE_URL: postgres://aifitness:aifitness@postgres:5432/aifitness
+      PG_SSL: 'false'
+      JWT_SECRET: ${JWT_SECRET:-dev-secret-change-me}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4.1-mini}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    command: npm run dev:full
+
+volumes:
+  postgres_data:

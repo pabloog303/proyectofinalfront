@@ -40,7 +40,7 @@ router.post('/fitness-assessment', requireAuth, async (req, res) => {
   }
 
   const now = new Date().toISOString()
-  const savedProfile = upsertFitnessProfile({
+  const savedProfile = await upsertFitnessProfile({
     id: createId('profile'),
     userId: req.user.userId,
     ...parsed.data,
@@ -65,13 +65,13 @@ router.post('/generate-workout-plan', requireAuth, async (req, res) => {
   }
 
   try {
-    const history = getWorkoutLogsByUserId(req.user.userId)
+    const history = await getWorkoutLogsByUserId(req.user.userId)
     const result = await generateWorkoutPlan({
       ...parsed.data,
       history,
     })
     const planId = createId('plan')
-    const persisted = saveWorkoutPlan({
+    const persisted = await saveWorkoutPlan({
       id: planId,
       userId: req.user.userId,
       summary: result.summary,
@@ -95,8 +95,8 @@ router.post('/generate-workout-plan', requireAuth, async (req, res) => {
 })
 
 router.get('/workout-plan/latest', requireAuth, async (req, res) => {
-  const latestPlan = getLatestPlanByUserId(req.user.userId)
-  const profile = getFitnessProfileByUserId(req.user.userId)
+  const latestPlan = await getLatestPlanByUserId(req.user.userId)
+  const profile = await getFitnessProfileByUserId(req.user.userId)
 
   return res.json({
     ok: true,
@@ -111,7 +111,7 @@ router.post('/workout-log', requireAuth, async (req, res) => {
     return res.status(400).json({ ok: false, error: 'WORKOUT_LOG_INVALID', details: parsed.error.flatten() })
   }
 
-  const log = createWorkoutLog({
+  const log = await createWorkoutLog({
     id: createId('log'),
     userId: req.user.userId,
     ...parsed.data,
@@ -124,7 +124,7 @@ router.post('/workout-log', requireAuth, async (req, res) => {
 router.get('/workout-log', requireAuth, async (req, res) => {
   return res.json({
     ok: true,
-    logs: getWorkoutLogsByUserId(req.user.userId),
+    logs: await getWorkoutLogsByUserId(req.user.userId),
   })
 })
 

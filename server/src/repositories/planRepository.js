@@ -1,26 +1,29 @@
-import db from '../db/database.js'
+import { DB_PROVIDER } from '../db/config.js'
+import {
+  getLatestPlanByUserIdSqlite,
+  getWorkoutPlanByIdSqlite,
+  saveWorkoutPlanSqlite,
+} from './sqlitePlanRepository.js'
+import {
+  getLatestPlanByUserIdPostgres,
+  getWorkoutPlanByIdPostgres,
+  saveWorkoutPlanPostgres,
+} from './postgresPlanRepository.js'
 
-export function saveWorkoutPlan({ id, userId, summary, planJson, createdAt }) {
-  db.prepare('INSERT INTO workout_plans (id, user_id, summary, plan_json, created_at) VALUES (?, ?, ?, ?, ?)')
-    .run(id, userId, summary, JSON.stringify(planJson), createdAt)
-
-  return getWorkoutPlanById(id)
+export function saveWorkoutPlan(payload) {
+  return DB_PROVIDER === 'postgres'
+    ? saveWorkoutPlanPostgres(payload)
+    : saveWorkoutPlanSqlite(payload)
 }
 
 export function getLatestPlanByUserId(userId) {
-  const row = db.prepare('SELECT * FROM workout_plans WHERE user_id = ? ORDER BY created_at DESC LIMIT 1').get(userId)
-  if (!row) return null
-  return {
-    ...row,
-    plan: JSON.parse(row.plan_json),
-  }
+  return DB_PROVIDER === 'postgres'
+    ? getLatestPlanByUserIdPostgres(userId)
+    : getLatestPlanByUserIdSqlite(userId)
 }
 
 export function getWorkoutPlanById(id) {
-  const row = db.prepare('SELECT * FROM workout_plans WHERE id = ?').get(id)
-  if (!row) return null
-  return {
-    ...row,
-    plan: JSON.parse(row.plan_json),
-  }
+  return DB_PROVIDER === 'postgres'
+    ? getWorkoutPlanByIdPostgres(id)
+    : getWorkoutPlanByIdSqlite(id)
 }

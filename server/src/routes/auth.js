@@ -18,14 +18,14 @@ router.post('/register', async (req, res) => {
     return res.status(400).json({ ok: false, error: 'INVALID_REGISTER_PAYLOAD', details: parsed.error.flatten() })
   }
 
-  const existing = findUserByEmail(parsed.data.email)
+  const existing = await findUserByEmail(parsed.data.email)
   if (existing) {
     return res.status(409).json({ ok: false, error: 'EMAIL_ALREADY_EXISTS' })
   }
 
   const passwordHash = await bcrypt.hash(parsed.data.password, 10)
   const createdAt = new Date().toISOString()
-  const user = createUser({
+  const user = await createUser({
     id: createId('usr'),
     email: parsed.data.email,
     passwordHash,
@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
     return res.status(400).json({ ok: false, error: 'INVALID_LOGIN_PAYLOAD', details: parsed.error.flatten() })
   }
 
-  const user = findUserByEmail(parsed.data.email)
+  const user = await findUserByEmail(parsed.data.email)
   if (!user) {
     return res.status(401).json({ ok: false, error: 'INVALID_CREDENTIALS' })
   }

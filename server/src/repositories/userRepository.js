@@ -1,16 +1,29 @@
-import db from '../db/database.js'
+import { DB_PROVIDER } from '../db/config.js'
+import {
+  createUserSqlite,
+  findUserByEmailSqlite,
+  findUserByIdSqlite,
+} from './sqliteUserRepository.js'
+import {
+  createUserPostgres,
+  findUserByEmailPostgres,
+  findUserByIdPostgres,
+} from './postgresUserRepository.js'
 
 export function findUserByEmail(email) {
-  return db.prepare('SELECT * FROM users WHERE email = ?').get(email)
+  return DB_PROVIDER === 'postgres'
+    ? findUserByEmailPostgres(email)
+    : findUserByEmailSqlite(email)
 }
 
 export function findUserById(id) {
-  return db.prepare('SELECT id, email, created_at FROM users WHERE id = ?').get(id)
+  return DB_PROVIDER === 'postgres'
+    ? findUserByIdPostgres(id)
+    : findUserByIdSqlite(id)
 }
 
-export function createUser({ id, email, passwordHash, createdAt }) {
-  db.prepare('INSERT INTO users (id, email, password_hash, created_at) VALUES (?, ?, ?, ?)')
-    .run(id, email, passwordHash, createdAt)
-
-  return findUserById(id)
+export function createUser(payload) {
+  return DB_PROVIDER === 'postgres'
+    ? createUserPostgres(payload)
+    : createUserSqlite(payload)
 }
