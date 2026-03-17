@@ -1,0 +1,4 @@
+/* Estilos específicos del dashboard AI; la base está compartida en AIAssessment.css */
+.ai-dashboard-page .ai-kicker {
+  color: var(--color-blue);
+}

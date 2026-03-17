@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import '../styles/Auth.css'
+import { loginApi, registerApi } from '../services/authApi.js'
 
 export default function Auth({ onLogin }) {
   const [mode, setMode] = useState('login')
@@ -8,25 +9,24 @@ export default function Auth({ onLogin }) {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
-  function register() {
-    const users = JSON.parse(localStorage.getItem('planmi21k_users')) || []
-    if (users.find(u => u.email === email)) {
-      setError('Usuario ya registrado')
-      return
+  async function register() {
+    try {
+      const response = await registerApi({ email, password })
+      localStorage.setItem('planmi21k_token', response.token)
+      setError('')
+      onLogin(response.user)
+    } catch (err) {
+      setError(err.message === 'EMAIL_ALREADY_EXISTS' ? 'Ese correo ya está registrado' : 'No se pudo completar el registro')
     }
-    users.push({ email, password })
-    localStorage.setItem('planmi21k_users', JSON.stringify(users))
-    setError('')
-    alert('Registro exitoso! Ahora inicia sesión')
-    setMode('login')
   }
 
-  function login() {
-    const users = JSON.parse(localStorage.getItem('planmi21k_users')) || []
-    const user = users.find(u => u.email === email && u.password === password)
-    if (user) {
-      onLogin(user)
-    } else {
+  async function login() {
+    try {
+      const response = await loginApi({ email, password })
+      localStorage.setItem('planmi21k_token', response.token)
+      setError('')
+      onLogin(response.user)
+    } catch {
       setError('Credenciales inválidas')
     }
   }

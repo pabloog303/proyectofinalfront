@@ -1,0 +1,349 @@
+.ai-assessment-page,
+.ai-dashboard-page {
+  min-height: calc(100vh - 68px);
+  padding: 110px 24px 48px;
+  background:
+    radial-gradient(circle at top left, rgba(0,255,136,0.08), transparent 30%),
+    radial-gradient(circle at top right, rgba(41,121,255,0.10), transparent 35%),
+    var(--color-bg);
+}
+
+.ai-assessment-shell,
+.ai-results-shell,
+.ai-dashboard-head {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.ai-assessment-header,
+.ai-results-head,
+.ai-dashboard-head {
+  margin-bottom: 28px;
+}
+
+.ai-kicker,
+.ai-mini-kicker {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--color-green);
+  font-weight: 800;
+}
+
+.ai-assessment-header h1,
+.ai-dashboard-head h1,
+.ai-results-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4.3rem);
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 10px 0 14px;
+}
+
+.ai-assessment-header p,
+.ai-dashboard-head p,
+.ai-results-head p {
+  color: var(--color-text-sub);
+  max-width: 760px;
+}
+
+.ai-assessment-grid,
+.ai-score-grid,
+.ai-workout-grid,
+.ai-insights-grid,
+.ai-dashboard-score-grid,
+.ai-dashboard-layout {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.ai-assessment-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 24px;
+}
+
+.ai-assessment-form-card,
+.ai-assessment-preview-card,
+.ai-score-card,
+.ai-day-card,
+.ai-info-card,
+.ai-dashboard-panel {
+  padding: 28px;
+}
+
+.ai-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.ai-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ai-form label span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-text-sub);
+  font-weight: 700;
+}
+
+.ai-form input,
+.ai-form select {
+  height: 48px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,0.04);
+  color: var(--color-text);
+  padding: 0 14px;
+  outline: none;
+}
+
+.ai-form input:focus,
+.ai-form select:focus {
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 3px rgba(41,121,255,0.16);
+}
+
+.ai-equipment-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ai-chip {
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,0.04);
+  color: var(--color-text-sub);
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.ai-chip.active {
+  background: rgba(0,255,136,0.12);
+  color: var(--color-green);
+  border-color: rgba(0,255,136,0.25);
+}
+
+.ai-submit {
+  margin-top: 22px;
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(90deg, var(--color-green), var(--color-blue));
+  color: #08120d;
+  font-weight: 900;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.ai-error {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,90,90,0.10);
+  border: 1px solid rgba(255,90,90,0.25);
+  color: #ff8e8e;
+}
+
+.ai-preview-list,
+.ai-info-card ul,
+.ai-dashboard-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ai-preview-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.ai-preview-copy,
+.ai-duration,
+.ai-dashboard-day-head span,
+.ai-dashboard-panel p {
+  color: var(--color-text-sub);
+}
+
+.ai-score-grid,
+.ai-dashboard-score-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 26px;
+}
+
+.ai-workout-grid {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.ai-day-card h3,
+.ai-info-card h3,
+.ai-dashboard-panel h2,
+.ai-dashboard-day h3 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  margin: 8px 0 12px;
+}
+
+.ai-exercise-list,
+.ai-dashboard-exercises {
+  display: grid;
+  gap: 10px;
+}
+
+.ai-exercise-item,
+.ai-dashboard-exercise {
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  display: grid;
+  gap: 4px;
+}
+
+.ai-insights-grid,
+.ai-dashboard-layout {
+  margin-top: 24px;
+  display: grid;
+  gap: 20px;
+}
+
+.ai-insights-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ai-dashboard-layout {
+  grid-template-columns: 1.3fr 0.7fr;
+}
+
+.ai-dashboard-days,
+.ai-dashboard-side {
+  display: grid;
+  gap: 16px;
+}
+
+.ai-dashboard-day {
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.ai-log-box {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: grid;
+  gap: 12px;
+}
+
+.ai-log-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ai-inline-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-sub);
+  font-size: 14px;
+}
+
+.ai-rpe-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-sub);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.ai-rpe-field input,
+.ai-log-notes {
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,0.04);
+  color: var(--color-text);
+}
+
+.ai-rpe-field input {
+  width: 68px;
+  height: 40px;
+  padding: 0 10px;
+}
+
+.ai-log-notes {
+  min-height: 88px;
+  width: 100%;
+  resize: vertical;
+  padding: 12px 14px;
+  font-family: var(--font-body);
+}
+
+.ai-log-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ai-mini-action {
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-blue));
+  color: white;
+  font-weight: 800;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.ai-log-ok {
+  color: var(--color-green);
+  font-weight: 700;
+}
+
+.ai-log-error {
+  color: #ff8e8e;
+  font-size: 13px;
+}
+
+@media (max-width: 1024px) {
+  .ai-assessment-grid,
+  .ai-dashboard-layout,
+  .ai-insights-grid,
+  .ai-score-grid,
+  .ai-dashboard-score-grid,
+  .ai-workout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .ai-assessment-page,
+  .ai-dashboard-page {
+    padding: 96px 16px 36px;
+  }
+
+  .ai-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

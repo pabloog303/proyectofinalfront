@@ -9,6 +9,8 @@ import Estadisticas from './components/Estadisticas.jsx'
 import AcercaDe from './components/AcercaDe.jsx'
 import Navbar from './components/Navbar.jsx'
 import Home from './components/Home.jsx'
+import AIAssessment from './components/ai/AIAssessment.jsx'
+import AIWorkoutDashboard from './components/ai/AIWorkoutDashboard.jsx'
 import './App.css'
 
 function App() {
@@ -21,6 +23,9 @@ function App() {
   })
 
   const [showAuth, setShowAuth] = useState(false)
+  const [aiPlan, setAiPlan] = useState(() => {
+    return JSON.parse(localStorage.getItem('planmi21k_ai_plan')) || null
+  })
 
   useEffect(() => {
     localStorage.setItem('planmi21k_user', JSON.stringify(user))
@@ -30,12 +35,19 @@ function App() {
     localStorage.setItem('planmi21k_plan', JSON.stringify(plan))
   }, [plan])
 
+  useEffect(() => {
+    localStorage.setItem('planmi21k_ai_plan', JSON.stringify(aiPlan))
+  }, [aiPlan])
+
   // Logout
   function logout() {
     setUser(null)
     setPlan(null)
+    setAiPlan(null)
     localStorage.removeItem('planmi21k_user')
+    localStorage.removeItem('planmi21k_token')
     localStorage.removeItem('planmi21k_plan')
+    localStorage.removeItem('planmi21k_ai_plan')
   }
 
   function handleLogin(userData) {
@@ -71,6 +83,22 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route
+          path="/ai-assessment"
+          element={
+            <ProtectedRoute>
+              <AIAssessment onPlanGenerated={setAiPlan} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/ai-dashboard"
+          element={
+            <ProtectedRoute>
+              {aiPlan ? <AIWorkoutDashboard plan={aiPlan} /> : <Navigate to="/ai-assessment" replace />}
+            </ProtectedRoute>
+          }
+        />
         <Route path="/acerca-de" element={<AcercaDe />} />
         <Route 
           path="/login" 

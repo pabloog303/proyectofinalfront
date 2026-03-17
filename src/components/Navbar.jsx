@@ -35,6 +35,7 @@ export default function Navbar({ onLogout, hasLogin }) {
       <div className={`navbar-menu ${menuOpen ? 'open' : ''}`}>
         {hasLogin ? (
           <>
+            <Link to="/ai-dashboard" onClick={closeMenu}>AI Coach</Link>
             <Link to="/mi-plan" onClick={closeMenu}>Mi Plan</Link>
             <Link to="/estadisticas" onClick={closeMenu}>Estadísticas</Link>
             <Link to="/acerca-de" onClick={closeMenu}>Acerca de</Link>
@@ -44,6 +45,7 @@ export default function Navbar({ onLogout, hasLogin }) {
           <>
             <Link to="/" onClick={closeMenu}>Inicio</Link>
             <Link to="/acerca-de" onClick={closeMenu}>Acerca de</Link>
+            <Link to="/login" onClick={closeMenu}>Entrar</Link>
             <Link to="/configurar-plan" className="btn-crear-plan" onClick={closeMenu}>Crear Plan</Link>
           </>
         )}

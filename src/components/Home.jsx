@@ -98,8 +98,8 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: [0.2, 0.8, 0.2, 1], delay: 0.15 }}
           >
-            Genera tu plan de entrenamiento personalizado basado en ciencia deportiva.
-            Desde cero hasta cruzar la meta — con estructura, propósito y progresión.
+            Convierte tu preparación en un sistema inteligente: planes personalizados, coaching dinámico,
+            scoring de rendimiento y progresión guiada por IA.
           </motion.p>
 
           <motion.div
@@ -108,6 +108,9 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: [0.2, 0.8, 0.2, 1], delay: 0.20 }}
           >
+            <Link to="/ai-assessment" className="btn-primary">
+              Probar AI Coach
+            </Link>
             <Link to="/configurar-plan" className="btn-primary">
               Crear Mi Plan Gratis
             </Link>
@@ -123,16 +126,16 @@ export default function Home() {
             transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1], delay: 0.25 }}
           >
             <div className="hero-stat">
-              <span className="hero-stat-value">3</span>
-              <span className="hero-stat-label">Niveles</span>
+              <span className="hero-stat-value">AI</span>
+              <span className="hero-stat-label">Coach</span>
             </div>
             <div className="hero-stat">
-              <span className="hero-stat-value">4</span>
-              <span className="hero-stat-label">Fases</span>
+              <span className="hero-stat-value">24/7</span>
+              <span className="hero-stat-label">Insights</span>
             </div>
             <div className="hero-stat">
-              <span className="hero-stat-value">7</span>
-              <span className="hero-stat-label">Tipos Entreno</span>
+              <span className="hero-stat-value">1:1</span>
+              <span className="hero-stat-label">Personalización</span>
             </div>
             <div className="hero-stat">
               <span className="hero-stat-value">100%</span>
